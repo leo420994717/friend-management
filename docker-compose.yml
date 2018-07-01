@@ -7,7 +7,8 @@ services:
      volumes:
       - ./nginx/default.conf:/etc/nginx/conf.d/default.conf
      links:
-      - fm-service     
+      - fm-service
+      - fm-phpmyadmin      
      ports:
       - "80:80"
 
@@ -19,3 +20,25 @@ services:
      volumes:
       - ./fm-service:/var/www/html
       - ./php/fm-service.conf:/etc/httpd/conf.d/fm-service.conf
+
+    fm-service-db:
+      container_name: fm-service-db
+      image: mysql:5.7
+      volumes:
+       - ./db:/var/lib/mysql
+      command: --innodb-use-native-aio=0
+      environment:
+       MYSQL_ROOT_PASSWORD: Asd!#oasdfo8u
+       MYSQL_DATABASE: fm_service_db
+       MYSQL_USER: fmadmin
+       MYSQL_PASSWORD: asD!@osajd187
+       
+    fm-phpmyadmin:
+      container_name: fm-phpmyadmin
+      image: phpmyadmin/phpmyadmin
+      ports:
+       - "8081:80"
+      links:
+       - fm-service-db
+      environment:
+       PMA_HOSTS: fm-service-db
