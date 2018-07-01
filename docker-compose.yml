@@ -1,0 +1,21 @@
+version: "2"
+
+services:
+    fm-nginx:
+     container_name: fm-nginx
+     image: nginx
+     volumes:
+      - ./nginx/default.conf:/etc/nginx/conf.d/default.conf
+     links:
+      - fm-service     
+     ports:
+      - "80:80"
+
+    fm-service:
+     container_name: fm-service
+     build: ./php
+     expose:
+      - "80"   
+     volumes:
+      - ./fm-service:/var/www/html
+      - ./php/fm-service.conf:/etc/httpd/conf.d/fm-service.conf
