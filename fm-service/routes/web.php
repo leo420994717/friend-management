@@ -11,6 +11,16 @@
 |
 */
 
-$router->get('/', function () use ($router) {
-    return $router->app->version();
-});
+$router->post('/users', 'UserController@create');
+
+$router->post('/friends', 'FriendController@create');
+
+$router->post('/friends/get-list', 'FriendController@getList');
+
+$router->post('/friends/get-common-list', 'FriendController@getCommonList');
+
+$router->post('/subscribes', 'SubscribeController@create');
+
+$router->post('/blocks', 'BlockListController@create');
+
+$router->post('/updates', 'UpdatesController@create');
