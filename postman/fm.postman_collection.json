@@ -19,7 +19,7 @@
 		{
 			"id": "04fc6692-0d55-1cb7-96c6-2564fbcf6015",
 			"headers": "Content-Type: application/json\n",
-			"url": "{{HOST}}/fm-service/subscribes",
+			"url": "{{HOST}}/fm-service/friends/get-common-list",
 			"preRequestScript": null,
 			"pathVariables": {},
 			"method": "POST",
@@ -28,12 +28,12 @@
 			"tests": null,
 			"currentHelper": "normal",
 			"helperAttributes": {},
-			"time": 1530462182511,
+			"time": 1530500701715,
 			"name": "{{HOST}}/fm-service/friends/get-common-list",
 			"description": "",
 			"collectionId": "db54f512-9d42-3c3b-92a3-108d212e2674",
 			"responses": [],
-			"rawModeData": "{\r\n  \"requestor\": \"lisa@example.com\",\r\n  \"target\": \"john@example.com\"\r\n}"
+			"rawModeData": "{\r\n  \"friends\":\r\n    [\r\n\t  \"andy@example.com\",\r\n      \"john@example.com\"\r\n    ]\r\n}"
 		},
 		{
 			"id": "08964d27-569e-4e71-b089-a002315ed95d",
@@ -126,7 +126,7 @@
 			"tests": null,
 			"currentHelper": "normal",
 			"helperAttributes": {},
-			"time": 1530462185630,
+			"time": 1530501185265,
 			"name": "{{HOST}}/fm-service/blocks",
 			"description": "",
 			"collectionId": "db54f512-9d42-3c3b-92a3-108d212e2674",
