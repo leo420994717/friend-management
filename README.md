@@ -47,3 +47,14 @@ The API should return the following JSON response on success:
 	"success": true
 }
 ```
+## Test with Phpunit
+Add php unit test scripts to test with all 6 user stories. 
+This unit test only can run one time, then need to rollback the data. Because test result will have conflict after adding more friends. 
+To run the test: 
+```bash
+docker exec -it fm-service /bin/bash
+cd /var/www/html
+php artisan migrate:rollback
+php artisan migrate
+./vendor/bin/phpunit tests/FmTest.php
+```
