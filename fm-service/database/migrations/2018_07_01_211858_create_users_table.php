@@ -20,27 +20,43 @@ class CreateUsersTable extends Migration
         
         Schema::create('friend', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('user_id');
-            $table->integer('friend_user_id');
+            $table->integer('user_id')->unsigned();
+            $table->integer('friend_user_id')->unsigned();
         });
+        Schema::table('friend', function(Blueprint $table) {
+            $table->foreign('user_id')->references('id')->on('user');
+            $table->foreign('friend_user_id')->references('id')->on('user');
+        });
+        
         
         Schema::create('subscribe', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('requestor_user_id');
-            $table->integer('target_user_id');
+            $table->integer('requestor_user_id')->unsigned();
+            $table->integer('target_user_id')->unsigned();
+        });
+        Schema::table('subscribe', function(Blueprint $table) {
+            $table->foreign('requestor_user_id')->references('id')->on('user');
+            $table->foreign('target_user_id')->references('id')->on('user');
         });
         
         Schema::create('block_list', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('requestor_user_id');
-            $table->integer('target_user_id');
+            $table->integer('requestor_user_id')->unsigned();
+            $table->integer('target_user_id')->unsigned();
+        });
+        Schema::table('block_list', function(Blueprint $table) {
+            $table->foreign('requestor_user_id')->references('id')->on('user');
+            $table->foreign('target_user_id')->references('id')->on('user');
         });
         
         Schema::create('updates', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('user_id');
+            $table->integer('user_id')->unsigned();
             $table->text('text');
             $table->timestamp('created_at');
+        });
+        Schema::table('updates', function(Blueprint $table) {
+            $table->foreign('user_id')->references('id')->on('user');
         });
     }
 
@@ -51,6 +67,10 @@ class CreateUsersTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('users');
+        Schema::dropIfExists('updates');
+        Schema::dropIfExists('block_list');
+        Schema::dropIfExists('subscribe');
+        Schema::dropIfExists('friend');
+        Schema::dropIfExists('user');
     }
 }
