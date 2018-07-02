@@ -31,3 +31,19 @@ cd /var/www/html
 php artisan migrate
 ```
 ## Test
+## Test with Postman
+1. Import file ./postman/fm.postman_collection.json to postman
+2. Change environment variable "HOST" to http://localhost or your local IP. (I'm using VM with local IP address 192.168.99.100)
+3. You can send request to test now. Below is one example to create a new user: 
+Send request to {{HOST}}/fm-service/users with below JSON input
+```bash
+{
+	"email": "kate@example.com"
+}
+```
+The API should return the following JSON response on success:
+```bash
+{
+	"success": true
+}
+```
