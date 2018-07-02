@@ -8,7 +8,7 @@ Before you start make sure you have [Docker Compose](https://docs.docker.com/com
 
 Clone the repo by running the following command
 ```bash
-git clone https://github.com/prbdias/docker-lumen.git
+git clone https://github.com/leo420994717/friend-management.git
 ```  
 
 ### Steps 2: Install dependencies
