@@ -9,7 +9,7 @@ RUN yum -y --setopt=tsflags=nodocs update && \
     yum -y --setopt=tsflags=nodocs install httpd && \
     rpm -Uvh https://dl.fedoraproject.org/pub/epel/epel-release-latest-7.noarch.rpm && \
     rpm -Uvh https://mirror.webtatic.com/yum/el7/webtatic-release.rpm && \
-    yum -y install php70w php70w-opcache php70w-pdo memcached php70w-pecl-memcached php70w-mysql && \
+    yum -y install php70w php70w-opcache php70w-pdo memcached php70w-pecl-memcached php70w-mysql phpunit && \
 	yum -y install curl && \
     yum clean all
 
