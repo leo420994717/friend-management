@@ -24,3 +24,10 @@ Under app root folder, run following code to start docker-compose
 ```bash
 docker-compose up -d
 ```
+Create database tables
+```bash
+docker exec -it fm-service /bin/bash
+cd /var/www/html
+php artisan migrate
+```
+## Test
