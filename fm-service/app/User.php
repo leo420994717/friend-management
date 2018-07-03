@@ -49,6 +49,9 @@ class User extends Model implements AuthenticatableContract, AuthorizableContrac
      */
     public function hasFriend($friendUserId)
     {
+        // TODO
+        // Need clear the rule and consider if target user has added user as a friend or not
+        
         return Friend::where('user_id', $this->id)->where('friend_user_id', $friendUserId)
                 ->exists();
     }
